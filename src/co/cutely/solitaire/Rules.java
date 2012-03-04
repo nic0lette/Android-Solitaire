@@ -229,7 +229,7 @@ class NormalSolitaire extends Rules {
     @Override
     public void Init(final Bundle map) {
         mIgnoreEvents = true;
-        mDealThree = mView.GetSettings().getBoolean("SolitaireDealThree", true);
+        mDealThree = mView.GetSettings().getBoolean("SolitaireDealThree", false);
 
         // Thirteen total anchors for regular solitaire
         mCardCount = 52;

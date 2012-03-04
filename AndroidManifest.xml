@@ -27,7 +27,8 @@
         <activity
             android:name="co.cutely.solitaire.Solitaire"
             android:label="@string/app_name"
-            android:launchMode="singleInstance" >
+            android:launchMode="singleInstance"
+            android:screenOrientation="landscape" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

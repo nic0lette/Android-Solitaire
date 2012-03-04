@@ -62,6 +62,14 @@ class Card {
         return mX;
     }
 
+    public float getCenterX() {
+        return mX + (WIDTH / 2);
+    }
+
+    public float getMoveY() {
+        return mY + (HEIGHT * 2f / 3f);
+    }
+
     public float GetY() {
         return mY;
     }

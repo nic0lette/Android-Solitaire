@@ -145,4 +145,12 @@ class MoveCard {
         }
         return true;
     }
+
+    public float getX() {
+        return mCard[0].getCenterX();
+    }
+
+    public float getY() {
+        return mCard[0].getMoveY();
+    }
 }

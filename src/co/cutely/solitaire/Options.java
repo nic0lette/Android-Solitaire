@@ -37,7 +37,7 @@ public class Options {
         ((CheckBox) solitaire.findViewById(R.id.display_time)).setChecked(displayTime);
 
         // Solitaire stuff
-        final boolean dealThree = solitaire.GetSettings().getBoolean("SolitaireDealThree", true);
+        final boolean dealThree = solitaire.GetSettings().getBoolean("SolitaireDealThree", false);
         final boolean styleNormal = solitaire.GetSettings().getBoolean("SolitaireStyleNormal", true);
         ((RadioButton) solitaire.findViewById(R.id.deal_3)).setChecked(dealThree);
         ((RadioButton) solitaire.findViewById(R.id.deal_1)).setChecked(!dealThree);

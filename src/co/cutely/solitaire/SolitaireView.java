@@ -56,6 +56,8 @@ public class SolitaireView extends View {
     private CharSequence mHelpText;
     private CharSequence mWinText;
 
+    private float mPixelDensity = 1;
+
     private CardAnchor[] mCardAnchor;
     private DrawMaster mDrawMaster;
     private Rules mRules;
@@ -147,7 +149,7 @@ public class SolitaireView extends View {
             mRules.SetCarryOverScore(oldScore);
         }
         Card.SetSize(gameType);
-        mDrawMaster.DrawCards(GetSettings().getBoolean("DisplayBigCards", false));
+        mDrawMaster.DrawCards();
         mCardAnchor = mRules.GetAnchorArray();
         if (mDrawMaster.GetWidth() > 1) {
             mRules.Resize(mDrawMaster.GetWidth(), mDrawMaster.GetHeight());
@@ -357,7 +359,7 @@ public class SolitaireView extends View {
     }
 
     public boolean LoadSave() {
-        mDrawMaster.DrawCards(GetSettings().getBoolean("DisplayBigCards", false));
+        mDrawMaster.DrawCards();
         mTimePaused = true;
 
         try {
@@ -438,8 +440,20 @@ public class SolitaireView extends View {
 
     @Override
     protected void onSizeChanged(final int w, final int h, final int oldw, final int oldh) {
+        // Don't share the real size, only share it's MDPI equivalent
+        final int width = (int) (w / mPixelDensity);
+        final int height = (int) (h / mPixelDensity);
+
         mDrawMaster.SetScreenSize(w, h);
-        mRules.Resize(w, h);
+        mDrawMaster.setBoardSize(width, height);
+        mRules.Resize(width, height);
+
+        // Now, set the true scale, x & y, for drawing
+        mDrawMaster.setTrueScale(mPixelDensity, mPixelDensity);
+    }
+
+    public void setPixelDensity(final float pixelDensity) {
+        mPixelDensity = pixelDensity;
     }
 
     public void DisplayHelp() {
@@ -484,15 +498,14 @@ public class SolitaireView extends View {
     }
 
     @Override
-    public void onDraw(final Canvas canvas) {
+    public void onDraw(final Canvas windowCanvas) {
+        // Events first - so we have the most up to date state
+        mRules.HandleEvents();
 
-        // Only draw the stagnant stuff if it may have changed
-        if (mViewMode == MODE_NORMAL) {
-            // SanityCheck is for debug use only.
-            SanityCheck();
-            DrawBoard();
-        }
-        mDrawMaster.DrawLastBoard(canvas);
+        // Draw the board and then moving cards, etc...
+        final Canvas canvas = mDrawMaster.GetBoardCanvas();
+        DrawBoard();
+
         if (mDisplayTime) {
             mDrawMaster.DrawTime(canvas, mElapsed);
         }
@@ -519,7 +532,8 @@ public class SolitaireView extends View {
                 mAnimateCard.Draw(mDrawMaster, canvas);
         }
 
-        mRules.HandleEvents();
+        // Paint our frame to the screen
+        mDrawMaster.DrawLastBoard(windowCanvas);
     }
 
     @Override
@@ -566,25 +580,29 @@ public class SolitaireView extends View {
             return true;
         }
 
+        // Because the board only knows one set of coordinates, we have to translate from screen to board coordinates
+        final float boardX = event.getX() / mPixelDensity;
+        final float boardY = event.getY() / mPixelDensity;
+
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 mHasMoved = false;
                 mSpeed.Reset();
-                ret = onDown(event.getX(), event.getY());
-                mDownPoint.set(event.getX(), event.getY());
+                ret = onDown(boardX, boardY);
+                mDownPoint.set(boardX, boardY);
                 break;
             case MotionEvent.ACTION_UP:
             case MotionEvent.ACTION_CANCEL:
-                ret = onRelease(event.getX(), event.getY());
+                ret = onRelease(boardX, boardY);
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (!mHasMoved) {
-                    CheckMoved(event.getX(), event.getY());
+                    CheckMoved(boardX, boardY);
                 }
-                ret = onMove(mLastPoint.x - event.getX(), mLastPoint.y - event.getY(), event.getX(), event.getY());
+                ret = onMove(mLastPoint.x - boardX, mLastPoint.y - boardY, boardX, boardY);
                 break;
         }
-        mLastPoint.set(event.getX(), event.getY());
+        mLastPoint.set(boardX, boardY);
 
         if (!mGameStarted && !mMoveHistory.empty()) {
             mGameStarted = true;
@@ -708,7 +726,9 @@ public class SolitaireView extends View {
                 }
                 break;
             case MODE_MOVE_CARD:
-                mMoveCard.MovePosition(dx, dy);
+                final float cdx = mMoveCard.getX() - x;
+                final float cdy = mMoveCard.getY() - y;
+                mMoveCard.MovePosition(cdx, cdy);
                 return true;
             case MODE_CARD_SELECT:
                 if (mSelectCard.IsOnCard() && Math.abs(mDownPoint.x - x) > 30) {

@@ -17,8 +17,8 @@ package co.cutely.solitaire;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
@@ -47,6 +47,8 @@ public class Solitaire extends Activity {
 
     private boolean mDoSave;
 
+    private float mPixelDensity;
+
     // Shared preferences are where the various user settings are stored.
     public SharedPreferences GetSettings() {
         return mSettings;
@@ -57,8 +59,12 @@ public class Solitaire extends Activity {
         super.onCreate(savedInstanceState);
         mDoSave = true;
 
+        // Get display density
+        final DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        mPixelDensity = metrics.density;
+
         // Force landscape and no title for extra room
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         // If the user has never accepted the EULA show it again.
@@ -67,6 +73,9 @@ public class Solitaire extends Activity {
         mMainView = findViewById(R.id.main_view);
         mSolitaireView = (SolitaireView) findViewById(R.id.solitaire);
         mSolitaireView.SetTextView((TextView) findViewById(R.id.text));
+
+        // Set screen density in Solitaire View
+        mSolitaireView.setPixelDensity(mPixelDensity);
 
         // StartSolitaire(savedInstanceState);
     }
