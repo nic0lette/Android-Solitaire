@@ -15,9 +15,9 @@
   limitations under the License.
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kmagic.solitaire"
-    android:versionCode="450"
-    android:versionName="1.12.2" >
+    package="co.cutely.solitaire"
+    android:versionCode="1"
+    android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="7" />
 
@@ -25,7 +25,7 @@
         android:icon="@drawable/solitaire_icon"
         android:label="@string/app_name" >
         <activity
-            android:name=".Solitaire"
+            android:name="co.cutely.solitaire.Solitaire"
             android:label="@string/app_name"
             android:launchMode="singleInstance" >
             <intent-filter>

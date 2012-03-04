@@ -13,29 +13,30 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-  -->
+-->
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main_view"
-    android:orientation="horizontal"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
-    <com.kmagic.solitaire.SolitaireView
-      android:id="@+id/solitaire"
-      android:layout_width="fill_parent"
-      android:layout_height="fill_parent" />
+    android:layout_height="fill_parent"
+    android:orientation="horizontal" >
+
+    <co.cutely.solitaire.SolitaireView
+        android:id="@+id/solitaire"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
+
         <TextView
-          android:id="@+id/text"
-          android:text="@string/solitaire_layout_text_text"
-          android:visibility="visible"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_centerInParent="true"
-          android:gravity="center_horizontal"
-          />
-     </RelativeLayout>
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:text="@string/solitaire_layout_text_text"
+            android:visibility="visible" />
+    </RelativeLayout>
 
 </FrameLayout>
-

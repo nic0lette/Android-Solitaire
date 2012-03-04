@@ -1,0 +1,3 @@
+This is basically a fork of the project [solitaire-for-android](http://code.google.com/p/solitaire-for-android/) with changes to suit my crazy desires for what I'm looking for in a Solitaire game.
+
+Currently, the biggest issue, pun intended, is that the entire rendering system is written assuming MDPI screens, which kind of makes one want to claw their eyes out looking at it on an XHDPI display. I don't know what it looks like on an HDPI or LDPI display, but it probably isn't too too bad... maybe. 
