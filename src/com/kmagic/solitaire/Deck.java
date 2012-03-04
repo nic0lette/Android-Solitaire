@@ -12,75 +12,72 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
-*/ 
+ */
 package com.kmagic.solitaire;
 
 import java.util.Random;
 
-
 public class Deck {
 
-  private Card[] mCard;
-  private int mCardCount;
-  private int mTotalCards;
+    private Card[] mCard;
+    private int mCardCount;
 
-  public Deck(int decks) {
-    Init(decks, 4);
-  }
-
-  public Deck(int decks, int suits) {
-    if (suits == 2) {
-      decks *= 2;
-    } else if (suits == 1) {
-      decks *= 4;
+    public Deck(final int decks) {
+        Init(decks, 4);
     }
-    Init(decks, suits);
-  }
 
-  private void Init(int decks, int suits) {
-    mCardCount = decks * 13 * suits;
-    mTotalCards = mCardCount;
-    mCard = new Card[mCardCount];
-    for (int deck = 0; deck < decks; deck++) {
-      for (int suit = Card.CLUBS; suit < suits; suit++) {
-        for (int value = 0; value < 13; value++) {
-          mCard[deck*suits*13 + suit*Card.KING + value] = new Card(value+1, suit);
+    public Deck(int decks, final int suits) {
+        if (suits == 2) {
+            decks *= 2;
+        } else if (suits == 1) {
+            decks *= 4;
         }
-      }
+        Init(decks, suits);
     }
 
-    Shuffle();
-    Shuffle();
-    Shuffle();
-  }
+    private void Init(final int decks, final int suits) {
+        mCardCount = decks * 13 * suits;
+        mCard = new Card[mCardCount];
+        for (int deck = 0; deck < decks; deck++) {
+            for (int suit = Card.CLUBS; suit < suits; suit++) {
+                for (int value = 0; value < 13; value++) {
+                    mCard[deck * suits * 13 + suit * Card.KING + value] = new Card(value + 1, suit);
+                }
+            }
+        }
 
-  public void PushCard(Card card) {
-    mCard[mCardCount++] = card;
-  }
-
-  public Card PopCard() {
-    if (mCardCount > 0) {
-      return mCard[--mCardCount];
+        Shuffle();
+        Shuffle();
+        Shuffle();
     }
-    return null;
-  }
 
-  public boolean Empty() {
-    return mCardCount == 0;
-  }
-
-  public void Shuffle() {
-    int lastIdx = mCardCount - 1;
-    int swapIdx;
-    Card swapCard;
-    Random rand = new Random();
-
-    while (lastIdx > 1) {
-      swapIdx = rand.nextInt(lastIdx);
-      swapCard = mCard[swapIdx];
-      mCard[swapIdx] = mCard[lastIdx];
-      mCard[lastIdx] = swapCard;
-      lastIdx--;
+    public void PushCard(final Card card) {
+        mCard[mCardCount++] = card;
     }
-  }
+
+    public Card PopCard() {
+        if (mCardCount > 0) {
+            return mCard[--mCardCount];
+        }
+        return null;
+    }
+
+    public boolean Empty() {
+        return mCardCount == 0;
+    }
+
+    public void Shuffle() {
+        int lastIdx = mCardCount - 1;
+        int swapIdx;
+        Card swapCard;
+        Random rand = new Random();
+
+        while (lastIdx > 1) {
+            swapIdx = rand.nextInt(lastIdx);
+            swapCard = mCard[swapIdx];
+            mCard[swapIdx] = mCard[lastIdx];
+            mCard[lastIdx] = swapCard;
+            lastIdx--;
+        }
+    }
 }

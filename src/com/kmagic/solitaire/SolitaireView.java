@@ -26,7 +26,6 @@ import java.util.Stack;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.PointF;
 import android.os.Bundle;
@@ -109,7 +108,6 @@ public class SolitaireView extends View {
         mSpeed = new Speed();
         mReplay = new Replay(this, mAnimateCard);
 
-        Resources res = context.getResources();
         mHelpText = context.getResources().getText(R.string.help_text);
         mWinText = context.getResources().getText(R.string.win_text);
         mContext = context;
@@ -442,7 +440,6 @@ public class SolitaireView extends View {
     protected void onSizeChanged(final int w, final int h, final int oldw, final int oldh) {
         mDrawMaster.SetScreenSize(w, h);
         mRules.Resize(w, h);
-        mSelectCard.SetHeight(h);
     }
 
     public void DisplayHelp() {
@@ -794,7 +791,7 @@ public class SolitaireView extends View {
             }
             if (mUndoStorage[0].GetValue() == 1) {
                 for (int i = 0; i < mCardAnchor[from].GetCount(); i++) {
-                    Card card = mCardAnchor[from].GetCards()[i];
+                    // Card card = mCardAnchor[from].GetCards()[i];
                 }
             }
             Refresh();
@@ -834,7 +831,7 @@ public class SolitaireView extends View {
     // Simple function to check for a consistent state in Solitaire.
     private void SanityCheck() {
         int cardCount;
-        int diffCardCount;
+        // int diffCardCount;
         int matchCount;
         String type = mRules.GetGameTypeString();
         if (type == "Spider1Suit") {
