@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2008 Google Inc.
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+<resources>
+    <string name="app_name">Solitaire</string>
+    <string name="menu_solitaire">Solitaire</string>
+    <string name="menu_spider">Spider</string>
+    <string name="menu_freecell">Freecell</string>
+    <string name="menu_fortythieves">Forty Thieves</string>
+    <string name="menu_newgame">New Game</string>
+    <string name="menu_restart">Restart</string>
+    <string name="menu_stats">Stats</string>
+    <string name="menu_options">Options</string>
+    <string name="menu_help">Help</string>
+    <string name="menu_save_quit">Save&amp;Quit</string>
+    <string name="menu_quit">Quit</string>
+    <string name="solitaire_layout_text_text"></string>
+    <string name="accept">Accept</string>
+    <string name="decline">Decline</string>
+    <string name="cancel">Cancel</string>
+    <string name="clear">Clear Stats</string>
+    <string name="solitaire_options">Solitaire Options</string>
+    <string name="deal_1">Deal 1 Card</string>
+    <string name="deal_3">Deal 3 Cards</string>
+    <string name="normal">Normal Style</string>
+    <string name="vegas">Vegas Style</string>
+    <string name="spider_options">Spider Options</string>
+    <string name="suits_4">Four Suits</string>
+    <string name="suits_2">Two Suits</string>
+    <string name="suits_1">One Suit</string>
+    <string name="display_options">Display Options</string>
+    <string name="normal_cards">Normal Card Art</string>
+    <string name="big_cards">Large Card Art</string>
+    <string name="auto_move">Auto Move</string>
+    <string name="always">Always</string>
+    <string name="fling_only">Fling Only</string>
+    <string name="never">Never</string>
+    <string name="display_time">Display Time</string>
+    <string name="help_text">
+Moving:\n
+Single Card: Drag the card.\n
+Whole Stack: Drag the stack starting above the bottom card.\n
+Partial Stack: Tap the stack, scroll to adjust, then drag the top card.\n\n
+Auto Move:\n
+Fling a card to start a chain of moving cards to their home.\n\n
+Dealing:\n
+Tap the deck or click the trackball or search key.\n\n
+Undo:\n
+Push the back button.\n\n
+Menu:\n
+Change the gametype, save, options, and view this help.
+</string>
+    <string name="win_text">You Win!\n\nUse the menu to start a new game.</string>
+</resources>

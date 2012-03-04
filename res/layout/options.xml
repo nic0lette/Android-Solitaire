@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright 2008 Google Inc.
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/options_view"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/display_options"
+      android:focusable="true"
+      android:textSize="20sp"
+      android:gravity="center"
+    />
+
+    <RadioGroup
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:orientation="horizontal">
+
+      <RadioButton android:id="@+id/normal_cards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/normal_cards" />
+
+      <RadioButton android:id="@+id/big_cards"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/big_cards" />
+
+    </RadioGroup>
+
+    <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="fill_parent"
+      android:gravity="center"
+      android:layout_height="wrap_content">
+      <CheckBox android:id="@+id/display_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/display_time" />
+    </LinearLayout>
+
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/solitaire_options"
+      android:focusable="true"
+      android:textSize="20sp"
+      android:gravity="center"
+    />
+
+    <RadioGroup
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:orientation="horizontal">
+
+      <RadioButton android:id="@+id/deal_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deal_3" />
+
+      <RadioButton android:id="@+id/deal_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/deal_1" />
+
+    </RadioGroup>
+    <RadioGroup
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:orientation="horizontal">
+
+      <RadioButton android:id="@+id/style_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/normal" />
+
+      <RadioButton android:id="@+id/style_vegas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vegas" />
+
+    </RadioGroup>
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/spider_options"
+      android:focusable="true"
+      android:textSize="20sp"
+      android:gravity="center"
+    />
+
+    <RadioGroup
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:orientation="horizontal">
+
+      <RadioButton android:id="@+id/suits_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/suits_4" />
+
+      <RadioButton android:id="@+id/suits_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/suits_2" />
+
+      <RadioButton android:id="@+id/suits_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/suits_1" />
+
+    </RadioGroup>
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/auto_move"
+      android:focusable="true"
+      android:textSize="20sp"
+      android:gravity="center"
+    />
+
+    <RadioGroup
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:gravity="center"
+      android:orientation="horizontal">
+
+      <RadioButton android:id="@+id/auto_move_always"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/always" />
+
+      <RadioButton android:id="@+id/auto_move_fling_only"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fling_only" />
+
+      <RadioButton android:id="@+id/auto_move_never"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/never" />
+
+    </RadioGroup>
+    <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="fill_parent"
+      android:gravity="center"
+      android:layout_height="wrap_content">
+      <Button android:id="@+id/button_accept"
+        android:text="@string/accept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+      <Button android:id="@+id/button_cancel"
+        android:text="@string/cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    </LinearLayout>
+  </LinearLayout>
+</ScrollView>
+    
+
